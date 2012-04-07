@@ -15,3 +15,5 @@ You need:
 
 * Use https to susbcribe
 * Implement signatures to verify origin of content (we can use a secret set in the heroku:config for example.)
+* Support for multiple agregates
+* Make sure we do not depend on the feed's order in the config file!

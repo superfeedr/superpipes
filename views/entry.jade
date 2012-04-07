@@ -1,0 +1,16 @@
+entry
+    id=entry.id
+    title=entry.title
+    content=entry.content
+    summary=entry.summary
+    -var pub = new Date(parseInt(entry.postedTime * 1000)).toISOString();
+    published=pub
+    -var upd = new Date(parseInt(entry.updated * 1000)).toISOString();
+    updated=upd
+    link(href=entry.permalinkUrl, rel='alternate')
+    author
+        name=entry.actor.displayName
+    source
+        title=entry.source.title
+        link(href=entry.source.feed, rel='alternate', type='application/atom+xml')
+    

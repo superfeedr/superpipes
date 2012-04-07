@@ -40,7 +40,7 @@ console.log("Express server listening on port %d in %s mode", app.address().port
 // When starting, we need to subscribe to all the feeds in the configuration.
 for(var i=0; i<feeds.length; i++) {
     var url = feeds[i];
-    subscribe(url, i, function(err, url) {
+    subscribe(url, function(err, url) {
         if(err) {
             console.error(err);
         }
