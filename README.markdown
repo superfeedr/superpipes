@@ -14,4 +14,4 @@ You need:
 ## TODO
 
 * Use https to susbcribe
-* Implement signatures to veirify origin of content
+* Implement signatures to verify origin of content (we can use a secret set in the heroku:config for example.)

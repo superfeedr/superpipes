@@ -3,5 +3,9 @@
  */
 
 exports.notification = function(req, res){
-  res.render('index', { title: 'Express' })
+    console.log(req.params.id);
+    req.on('data', function (chunk) {
+        console.log(chunk.toString());
+    });
+    res.send("Thanks");
 };
