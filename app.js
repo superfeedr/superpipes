@@ -34,7 +34,7 @@ app.get('/json',        require('./routes/json.js').json); // Serves the agregat
 app.get('/feed/:id',    require('./routes/verification.js').verification); // PubSubhubbub verification mechanism
 app.post('/feed/:id',   require('./routes/notification.js').notification); // PubSubHubbub notification mechanism
 
-app.listen(3000);
+app.listen(process.env.PORT);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
 // When starting, we need to subscribe to all the feeds in the configuration.
