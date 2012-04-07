@@ -2,8 +2,6 @@ var _ = require('underscore');
 var flattener = require('../lib/flattener.js');
 var feeds = require('../config/feeds.js').feeds;
 
-
-var redis = require("redis").createClient();
 var rtg   = require("url").parse(process.env.REDISTOGO_URL);
 var redis = require("redis").createClient(rtg.port, rtg.hostname);
 if(rtg.auth) {
