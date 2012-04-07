@@ -1,8 +1,13 @@
 doctype xml
 feed(xmlns="http://www.w3.org/2005/Atom")
     title= feed.title
-    id= 'hhhh'
-    -var upd = new Date(parseInt(feed.entries[0].updated * 1000)).toISOString();
-    updated=upd
+    id= id
+    -if (feed.entries[0])
+        -var upd = new Date(parseInt(feed.entries[0].updated * 1000)).toISOString();
+        updated=upd
+    -else
+        -var upd = new Date(0).toISOString();
+        updated=upd
+        
     each entry in feed.entries
         include entry

@@ -9,6 +9,6 @@ exports.atom = function(req, res){
         feed.title = "Aggregate feed built using superpipes";
         feed.entries = entries;
         res.header('Content-Type', 'application/atom+xml'); 
-        res.render('atom', { feed: feed, layout: false})
+        res.render('atom', {id: req.params.id, feed: feed, layout: false})
     });
 };
