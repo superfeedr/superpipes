@@ -27,3 +27,6 @@ You need:
 * Implement signatures to verify origin of content (we can use a secret set in the heroku:config for example.)
 * Support for multiple agregates
 * Make sure we do not depend on the feed's order in the config file!
+* Add an HTML view (with a socket.io backend?)
+* Make sure the generated feeds are PubSubHubbub enabled as well
+* Allow for an XMPP retrieval if an XMPP server is provided to connect to
