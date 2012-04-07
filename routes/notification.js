@@ -12,7 +12,7 @@ exports.notification = function(req, res){
             feed: req.body.status.feed,
             title: req.body.status.title
         }
-        entries.save(entry, function() {
+        entries.save(req.params.id, entry, function() {
             // entry saved! Yay!
         });
     }

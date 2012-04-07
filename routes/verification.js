@@ -4,8 +4,8 @@
 var feeds = require('../config/feeds.js').feeds;
 
 exports.verification = function(req, res) {
-    
-    if(req.query['hub.mode'] === "subscribe" && req.params.id === new Buffer(req.query['hub.topic']).toString('base64')) {
+    var feed = feeds[req.params.id];
+    if(req.query['hub.mode'] === "subscribe" && feed && req.params.feedId === new Buffer(req.query['hub.topic']).toString('base64')) {
         res.send(req.query['hub.challenge']);
     }
     else {

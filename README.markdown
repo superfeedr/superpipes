@@ -38,3 +38,4 @@ You need:
 * Add an HTML view (with a socket.io backend?)
 * Make sure the generated feeds are PubSubHubbub enabled as well
 * Allow for an XMPP retrieval if an XMPP server is provided to connect to
+* Make sure we handle the datastore size limit!

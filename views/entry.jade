@@ -9,7 +9,8 @@ entry
     updated=upd
     link(href=entry.permalinkUrl, rel='alternate')
     author
-        name=entry.actor.displayName
+        - if (entry.actor)
+            name=entry.actor.displayName
     source
         title=entry.source.title
         link(href=entry.source.feed, rel='alternate', type='application/atom+xml')

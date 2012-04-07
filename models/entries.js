@@ -9,49 +9,43 @@ if(rtg.auth) {
 }
 
 module.exports = {
-    save: function(entry, callback) {
+    save: function(feed, entry, callback) {
         var flat = flattener.flatten(entry);
-        redis.hmset("e:" + entry.id, flat, function(err, result) {
+        redis.hmset("e:" + feed + ':' + entry.id, flat, function(err, result) {
             if(err) {
                 callback(err, result)
             }
             else {
-                redis.zadd("f:" + entry.source.id, entry.postedTime, entry.id, function(err, result) {
+                redis.zadd("f:" + feed , entry.postedTime, entry.id, function(err, result) {
                     callback(err, result);
                 });
             }
         });
     },
-    fetch: function(callback) {
+    fetch: function(feed, callback) {
         var agreg = [];
-        var done = _.after(feeds.length, function() {
-            callback(null, agreg);
-        })  
-
-        for(var i=0; i<feeds.length; i++) {
-            var feed = new Buffer(feeds[i]).toString('base64');
-            redis.zrange("f:" + feed, 0, 10, function(err, ids) {
-                if(err) {
-                    done(); // Unsuccessul!
+        var f = feeds[feed];
+        redis.zrange("f:" + feed, 0, 10, function(err, ids) {
+            if(err) {
+                callback(err, agreg);
+            }
+            else {
+                if(ids.length > 0) {
+                    var doneWithOne = _.after(ids.length, function() {
+                        callback(null, agreg);
+                    });
+                    for(var j = 0; j < ids.length; j++) {
+                        redis.hgetall("e:" + feed + ':' + ids[j], function(err, result) {
+                            var expanded = flattener.expand(result);
+                            agreg.push(expanded);
+                            doneWithOne();
+                        });
+                    }
                 }
                 else {
-                    if(ids.length > 0) {
-                        var doneWithOne = _.after(ids.length, function() {
-                            done();
-                        });
-                        for(var j = 0; j < ids.length; j++) {
-                            redis.hgetall("e:" + ids[j], function(err, result) {
-                                var expanded = flattener.expand(result);
-                                agreg.push(expanded);
-                                doneWithOne();
-                            });
-                        }
-                    }
-                    else {
-                        done();
-                    }
+                    callback(null, agreg);
                 }
-            });
-        }
+            }
+        });
     }
 }
