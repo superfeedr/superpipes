@@ -6,6 +6,7 @@
       "express": "2.5.0"
     , "jade": ">= 0.0.1"
     , "redis": ">= 0.7.1"
-    , "underscore": ">= 0.0.0"
+    , "underscore": "*"
+    , "discount": "*"
   }
 }
