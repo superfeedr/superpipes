@@ -18,7 +18,7 @@ exports.feeds = {
             "https://github.com/superfeedr.atom",
             "http://blog.msgboy.com/rss",
             "http://blog.superfeedr.com/atom",
-            "http://superfeedr.tumblr.com/",
+            "http://superfeedr.tumblr.com/rss",
         ]
     }
 }
