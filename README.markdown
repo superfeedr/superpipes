@@ -10,6 +10,7 @@ Here is what it does:
 Also, it's realtime, and can be tweaked in any way you want to fit your needs!
 
 We have deployed a [sample application](http://radiant-window-5539.herokuapp.com/) on heroku, with 2 aggregate feeds:
+
 * a 'tech blog' feed, which combines ([json](http://radiant-window-5539.herokuapp.com/first/json), [atom](http://radiant-window-5539.herokuapp.com/first/atom), [html](http://radiant-window-5539.herokuapp.com/first)):
     * http://push-pub.appspot.com/feed
     * http://techcrunch.com/feed/
