@@ -31,7 +31,7 @@ app.configure('production', function(){
 app.get('/',                    require('./routes/index.js').index);
 app.get('/:id/atom',            require('./routes/atom.js').atom); // Serves the agregated feed as Atom
 app.get('/:id/json',            require('./routes/json.js').json); // Serves the agregated feed as json. Supports the optional jsonp argument
-// app.get('/:id/',                 require('./routes/html.js').html); // Serves the agregated feed as html. 
+app.get('/:id',                 require('./routes/html.js').html); // Serves the agregated feed as html. 
 app.get('/feed/:id/:feedId',    require('./routes/verification.js').verification); // PubSubhubbub verification mechanism
 app.post('/feed/:id/:feedId',   require('./routes/notification.js').notification); // PubSubHubbub notification mechanism
 
