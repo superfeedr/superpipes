@@ -9,6 +9,20 @@ Here is what it does:
 
 Also, it's realtime, and can be tweaked in any way you want to fit your needs!
 
+We have deployed a [sample application](http://radiant-window-5539.herokuapp.com/) on heroku, with 2 aggregate feeds:
+* a 'tech blog' feed, which combines ([json](http://radiant-window-5539.herokuapp.com/first/json), [atom](http://radiant-window-5539.herokuapp.com/first/atom), [html](http://radiant-window-5539.herokuapp.com/first)):
+    * http://push-pub.appspot.com/feed
+    * http://techcrunch.com/feed/
+    * http://feeds.feedburner.com/ommalik
+    * http://feeds2.feedburner.com/thenextweb
+    * http://pandodaily.com/feed
+    * http://news.ycombinator.com/rss
+* An activity feed, which combines ([json](http://radiant-window-5539.herokuapp.com/profiles/json), [atom](http://radiant-window-5539.herokuapp.com/profiles/atom), [html](http://radiant-window-5539.herokuapp.com/profiles)):
+    * https://github.com/superfeedr.atom
+    * http://blog.msgboy.com/rss
+    * http://blog.superfeedr.com/atom
+    * http://superfeedr.tumblr.com/    
+
 
 ## Deploying
 
