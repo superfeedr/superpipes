@@ -25,7 +25,7 @@ module.exports = {
     fetch: function(feed, callback) {
         var agreg = [];
         var f = feeds[feed];
-        redis.zrange("f:" + feed, 0, 10, function(err, ids) {
+        redis.zrevrange("f:" + feed, 0, 10, function(err, ids) {
             if(err) {
                 callback(err, agreg);
             }
