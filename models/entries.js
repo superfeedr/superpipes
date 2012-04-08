@@ -42,7 +42,7 @@ module.exports = {
                     // 
                     redis.zremrangebyrank(feedKey, -1000,  -101, function(err, result) {
                         // Ok done.
-                    }
+                    });
                 });
             }
         });
