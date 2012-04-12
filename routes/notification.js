@@ -14,6 +14,8 @@ exports.notification = function(req, res){
         }
         entries.save(req.params.id, entry, function() {
             // entry saved! Yay!
+            // Here we want to emit an event on the application itself!
+            process.emit("notification", {feed: req.params.id, entry: entry});
         });
     }
     res.send("Thanks");

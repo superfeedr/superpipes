@@ -13,7 +13,7 @@ exports.html = function(req, res){
         entries.fetch(req.params.id, function(err, entries) {
             feed.title = [feed.name, "Aggregate feed built using superpipes"].join(" - ");
             feed.entries = entries;
-            res.render('html', {id: req.params.id, feed: feed, layout: false})
+            res.render('html', {id: req.params.id, feed: feed, title: feed.title})
         });
     }
 };

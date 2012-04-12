@@ -4,10 +4,13 @@
  */
 
 var express     = require('express'),
+    socketio    = require('socket.io'),
     subscribe   = require('./lib/subscriber.js').subscribe;
     feeds       = require('./config/feeds.js').feeds;
 
 var app = module.exports = express.createServer();
+var io = socketio.listen(app);
+
 
 // Configuration
 app.configure(function(){
@@ -34,6 +37,21 @@ app.get('/:id/json',            require('./routes/json.js').json); // Serves the
 app.get('/:id',                 require('./routes/html.js').html); // Serves the agregated feed as html. 
 app.get('/feed/:id/:feedId',    require('./routes/verification.js').verification); // PubSubhubbub verification mechanism
 app.post('/feed/:id/:feedId',   require('./routes/notification.js').notification); // PubSubHubbub notification mechanism
+
+// Socket.io
+io.sockets.on('connection', function (socket) {
+    var notif = function(obj) {
+        socket.emit('notification', obj);
+    }
+    process.on('notification', notif);
+    
+    socket.on('disconnect', function () {
+        process.removeListener('notification', notif);
+    });
+});
+
+
+
 
 app.listen(process.env.PORT);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

@@ -8,5 +8,6 @@
     , "redis": ">= 0.7.1"
     , "underscore": "*"
     , "discount": "*"
+    , "socket.io": "*"
   }
 }

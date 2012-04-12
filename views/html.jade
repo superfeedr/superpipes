@@ -1,4 +1,17 @@
 h1= feed.title
-each story in feed.entries
-    include story
+
+script(src='/socket.io/socket.io.js')
+
+script(type='text/javascript')
+  var socket = io.connect();
+  socket.on('notification', function (data) {
+      var story = "<h2>" + data.entry.title + "</h2>";
+      story += "<p>" + data.entry.summary + "</p>";
+      story += "<a href='" + data.entry.permalinkUrl + "'>Read More...</a>";
+      $("#stories").prepend(story);
+  });
+
+#stories
+    each story in feed.entries
+        include story
 
