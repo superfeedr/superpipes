@@ -11,6 +11,11 @@ var express     = require('express'),
 var app = module.exports = express.createServer();
 var io = socketio.listen(app);
 
+// For now at least, heroku doesn't support websockets :(
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 
 // Configuration
 app.configure(function(){
